@@ -23,7 +23,7 @@ git clone https://github.com/mvimal2607/packages_modules_Connectivity packages/m
 rm -rf system/bpf
 git clone https://github.com/mvimal2607/system_bpf system/bpf
 rm -rf external/libjxl
-git clone https://github.com/aosp-v-sweet/external_libjxl
+git clone https://github.com/aosp-v-sweet/external_libjxl -b android16-qpr2-release
 
 # setup build env
 source build/envsetup.sh
