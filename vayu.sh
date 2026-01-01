@@ -15,6 +15,16 @@ git clone https://github.com/yaap/packages_apps_DisplayFeatures packages/apps/Di
 rm -rf vendor/yaap/signing/keys
 git clone https://github.com/grepfox/yaap_sign vendor/yaap/signing/keys
 
+# replace repos 
+rm -rf packages/modules/UprobeStats
+git clone https://github.com/mvimal2607/packages_modules_UprobeStats packages/modules/UprobeStats
+rm -rf packages/modules/Connectivity
+git clone https://github.com/mvimal2607/packages_modules_Connectivity packages/modules/Connectivity
+rm -rf system/bpf
+git clone https://github.com/mvimal2607/system_bpf system/bpf
+rm -rf external/libjxl
+git clone https://github.com/aosp-v-sweet/external_libjxl
+
 # setup build env
 source build/envsetup.sh
 
@@ -26,8 +36,8 @@ export BUILD_USERNAME=home
 export BUILD_HOSTNAME=grepfox
 
 # Vanilla
-export YAAP_BUILDTYPE=Banshee
-export TARGET_BUILD_GAPPS=true
+export YAAP_BUILDTYPE=Vanilla
+export TARGET_BUILD_GAPPS=false
 lunch yaap_vayu-user
 m yaap
 mkdir -p release-files
