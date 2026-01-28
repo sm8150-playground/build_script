@@ -1,5 +1,5 @@
 # init repo
-repo init -u https://github.com/yaap/manifest.git -b sixteen --git-lfs --depth=1
+repo init -u https://github.com/yaap/manifest.git -b sixteen --git-lfs
 
 # clone device stuff
 git clone https://github.com/grepfox/local_manifest -b yaap .repo/local_manifests
@@ -13,7 +13,7 @@ git clone https://github.com/yaap/packages_apps_DisplayFeatures packages/apps/Di
 
 # Signing keys
 rm -rf vendor/yaap/signing/keys
-git clone https://github.com/grepfox/yaap_sign vendor/yaap/signing/keys
+git clone https://github.com/grepfox/yaap_sign vendor/yaap/signing/keys -b lexus
 
 # setup build env
 source build/envsetup.sh
@@ -26,19 +26,22 @@ export BUILD_USERNAME=home
 export BUILD_HOSTNAME=grepfox
 
 # Vanilla
-export YAAP_BUILDTYPE=Vanilla
+#export YAAP_BUILDTYPE=Vanilla
 export TARGET_BUILD_GAPPS=false
-lunch yaap_vayu-user
+export FORCE_JSON=1
+lunch yaap_lexus-user
 m yaap
-mkdir -p release-files
-cp -r out/target/product/vayu/YAAP-16* release-files/
-cp -r out/target/product/vayu/vayu.json release-files/vayu_vanilla.json
+mkdir -p release-files/vanilla
+cp -r out/target/product/lexus/YAAP-16* release-files/vanilla
+cp -r out/target/product/lexus/vayu.json release-files/vanilla
+cp ./out/target/product/lexus/obj/PACKAGING/target_files_intermediates/yaap_lexus-target_files/IMAGES/{boot.img,init_boot.img,vendor_boot.img,recovery.img,dtbo.img,vbmeta.img} release-files/vanilla
 
 # Gapps
-export YAAP_BUILDTYPE=Banshee
+#export YAAP_BUILDTYPE=Banshee
 export TARGET_BUILD_GAPPS=true
-lunch yaap_vayu-user
+export FORCE_JSON=1
+lunch yaap_lexus-user
 m yaap
-mkdir -p release-files
-cp -r out/target/product/vayu/YAAP-16* release-files/
-cp -r out/target/product/vayu/vayu.json release-files/
+cp -r out/target/product/lexus/YAAP-16* release-files/
+cp -r out/target/product/lexus/lexus.json release-files/
+cp ./out/target/product/lexus/obj/PACKAGING/target_files_intermediates/yaap_lexus-target_files/IMAGES/{boot.img,init_boot.img,vendor_boot.img,recovery.img,dtbo.img,vbmeta.img} release-files/
