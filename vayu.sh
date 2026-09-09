@@ -1,5 +1,5 @@
 # init repo
-repo init -u https://github.com/yaap/manifest.git -b sixteen --git-lfs --depth=1
+repo init -u https://github.com/yaap/manifest.git -b seventeen --git-lfs --depth=1
 
 # clone device stuff
 git clone https://github.com/grepfox/local_manifest -b yaap .repo/local_manifests
@@ -31,14 +31,14 @@ export TARGET_BUILD_GAPPS=false
 lunch yaap_vayu-user
 m yaap
 mkdir -p release-files
-cp -r out/target/product/vayu/YAAP-16* release-files/
+cp -r out/target/product/vayu/YAAP-17* release-files/
 cp -r out/target/product/vayu/vayu.json release-files/vayu_vanilla.json
 
 # Gapps
-export YAAP_BUILDTYPE=Banshee
+export YAAP_BUILDTYPE=Calypso
 export TARGET_BUILD_GAPPS=true
 lunch yaap_vayu-user
 m yaap
 mkdir -p release-files
-cp -r out/target/product/vayu/YAAP-16* release-files/
+cp -r out/target/product/vayu/YAAP-17* release-files/
 cp -r out/target/product/vayu/vayu.json release-files/
